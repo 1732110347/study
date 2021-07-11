@@ -1,0 +1,79 @@
+1
+lookfor xxx 查找关键词
+helpwin打开帮助
+who 内存变量列表
+whos 内存变量信息
+what 目录中的文件列表
+which xxx确定文件位置
+exist xxx变量检验函数 看是否存在
+path 查看路径
+addpath 添加路径
+
+esc清除一行
+all+backspace删除到行尾
+
+eps 浮点数精度
+inf 无穷大
+NaN 不定值
+i(j)复数中的虚数单位
+realmain 最小正浮点数
+realmax  最大正浮点数
+
+a E n=a*10^n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
