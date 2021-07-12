@@ -21,35 +21,100 @@ realmax  最大正浮点数
 
 a E n=a*10^n
 
+2
+format short 5位定点表示（默认值）
+format long 15位定点表示
+format short e 5位浮点表示
+format long e 15位浮点表示
+format short g 在5位定点和5位浮点中选择最好的格式表示，matlab自动选择
+format long g 在15位定点和15位浮点中选择最好的格式表示，matlab自动选择
 
+format hex 16进制格式表示
+format +在矩阵中，用符号+，-和空格表示正号，负号和零
+format bank 用美元与美分定点表示
+format rat 以有理数形式输出结果
+format compact 变量之间没有空行
+format loose 变量之间有空行
 
+~=不等于
 
+&逻辑与
+|逻辑或
+~逻辑非
+xor异或 相同时结果为0否则为1
+any 有非零元素为真
+all 所有元素均非零为真
 
+3
+abs 模
+angle 复数的相角
+complex 用实部和虚部构造一个复数
+conj复数的共轭
+imag 复数的虚部
+real 复数的实部
+unwrap 调整矩阵元素的相位
+isreal 是否为实数矩阵
+cplxpair 把复数矩阵排列成复共轭对
 
+向量与多项式
+冒号法 x=first:increment:last，表示从first到last结束，数据的增量为increment
+若增量为1，简写为x=first:last
 
+利用linspace直接定义数据元素个数
+linspace(first,last,number)包含number个元素
 
+logspace创建应该对数分隔的向量
+从10^first开始 
 
+x(n)表示向量中第n个元素
+x(n1:n2)n1至n2
 
+向量的四则运算相当于把元素拆开分别进行四则运算
 
+点积可以a.*b也可以 直接算出
+dot(a,b)a和b必须同维
+dot(a,b,dim)返回a和b在dim维的点积
 
+向量的叉积运算
+cross(a,b)必须为3维向量
+cross(a,b,dim)返回向量a和b在dim维的叉积。a和b必须有相同维数，size(a，dim)和size(b，dim)结果必须为3
 
+多项式
+构造带数值的多项式可以直接输入向量然后通过poly2sym(p)实现
 
+乘法运算conv(p1,p2)
 
+除法运算 deconv(p1,p2)
+调用格式[k,r]=deconv(p,q)
+k返回的是多项式p除以q的商，r是余式
 
+由根构造多项式
+root=[x x x]
+p=poly(root)
 
+多项式导数运算用polyder来实现 polyder(p)
 
+特殊变量
+生成单元数组
+E={A,B}
 
+cell预分配空间
+cell(N)生成一个nxn阶置空的单元数组
+cell(M,N)或者cell([M,N])
+cell(size(A))生成与A同形式的单元型的矩阵
 
+单元型变量的引用采用大括号作为下标的标识，小括号作为下标标识符则只显示该元素的压缩形式
 
-
-
-
-
-
-
-
-
-
+cell 生成单元型变量
+cellfun 对单元型变量中的元素作用的函数
+celldisp 显示单元型变量的内容 (C) (C,'name')在窗口显示单元型变量的内容名称为name而不是通常的ans
+cellplot 用图形显示单元型变量的内容 (C)返回一个向量，这个向量综合体现了表面，线和句柄 (C，'legend')返回一个向量，这个向量综合体现表面，线和句柄，并有图形注释legend
+num2cell 将数值转换成单元型变量
+deal 输入输出处理
+cell2struct 将单元型变量转换成结构型变量
+struct2cell 将结构型变量转换成单元型变量
+iscell 判断是否为单元型变量
+reshape 改变单元数组的结构
 
 
 
