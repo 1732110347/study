@@ -116,6 +116,17 @@ struct2cell 将结构型变量转换成单元型变量
 iscell 判断是否为单元型变量
 reshape 改变单元数组的结构
 
+结构型变量
+创建和引用
+struct('color',{'red','black'},'number',{1,2})
+
+struct 创建结构型变量
+fieldnames 得到结构型变量的属性名
+getfield 得到结构型变量的属性值
+setfield 设定结构型变量的属性值
+rmfield 删除结构型变量的属性
+isfield 判断是否为结构型变量的属性
+isstruct 判断是否为结构型变量
 
 
 
@@ -124,17 +135,43 @@ reshape 改变单元数组的结构
 
 
 
+矩阵运算
+
+eye(n) 创建nxn单位矩阵
+eye(m,n)
+eye(size(a))
+ones(n) 创建nxn全1矩阵
+ones(m,n)
+ones(size(a))
+zeros()全0
+rand(n)在[0,1]区间创建一个nxn均匀分布的随机矩阵
+compan(p)创建系数向量是p的多项式的伴随矩阵
+diag(v)创建一向量v中的元素为对角的对角阵
+hilb(n)创建nxn的Hilbert矩阵
+magic(n)生成n阶魔方矩阵
+sparse(a)将矩阵a转换为稀疏矩阵形式，由a的非零元素和下标构成稀疏矩阵s。
+若a本身为稀疏矩阵，返回a本身8
 
 
+矩阵元素的修改
+D=[A;B C]
+A(m,:)=[]删除A的第m行
+A(:,n)=[]删除A的第n列
+A(m,n)=a;对A的第m行第n列元素赋值，
+A(m,:)=[a b...];对第m
+A(:,n)=[a b ..]对第n
 
 
+矩阵的变维
+可以用: C(:)=A(:)和reshape函数调用reshape(X,m,n)将已知矩阵转为
 
 
-
-
-
-
-
+矩阵的变向
+Rot(90) 将A逆时针旋转90度
+Rot(90,k)将A逆时针旋转90度*k
+Fliplr(x)将x左右翻转
+flipud(x)将x上下翻转
+flipdim(x,dim)q dim=1时对行翻转 dim等于2时对列翻转
 
 
 
