@@ -1,0 +1,97 @@
+1
+lookfor xxx 查找关键词
+helpwin打开帮助
+who 内存变量列表
+whos 内存变量信息
+what 目录中的文件列表
+which xxx确定文件位置
+exist xxx变量检验函数 看是否存在
+path 查看路径
+addpath 添加路径
+
+esc清除一行
+all+backspace删除到行尾
+
+eps 浮点数精度
+inf 无穷大
+NaN 不定值
+i(j)复数中的虚数单位
+realmain 最小正浮点数
+realmax  最大正浮点数
+
+a E n=a*10^n
+
+2
+format short 5位定点表示（默认值）
+format long 15位定点表示
+format short e 5位浮点表示
+format long e 15位浮点表示
+format short g 在5位定点和5位浮点中选择最好的格式表示，matlab自动选择
+format long g 在15位定点和15位浮点中选择最好的格式表示，matlab自动选择
+
+format hex 16进制格式表示
+format +在矩阵中，用符号+，-和空格表示正号，负号和零
+format bank 用美元与美分定点表示
+format rat 以有理数形式输出结果
+format compact 变量之间没有空行
+format loose 变量之间有空行
+
+~=不等于
+
+&逻辑与
+|逻辑或
+~逻辑非
+xor异或 相同时结果为0否则为1
+any 有非零元素为真
+all 所有元素均非零为真
+
+3
+abs 模
+angle 复数的相角
+complex 用实部和虚部构造一个复数
+conj复数的共轭
+imag 复数的虚部
+real 复数的实部
+unwrap 调整矩阵元素的相位
+isreal 是否为实数矩阵
+cplxpair 把复数矩阵排列成复共轭对
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+矩阵运算
+
+eye(n) 创建nxn单位矩阵
+eye(m,n)
+eye(size(a))
+ones(n) 创建nxn全1矩阵
+ones(m,n)
+ones(size(a))
+zeros()全0
+rand(n)在[0,1]区间创建一个nxn均匀分布的随机矩阵
+compan(p)创建系数向量是p的多项式的伴随矩阵
+diag(v)创建一向量v中的元素为对角的对角阵
+hilb(n)创建nxn的Hilbert矩阵
+magic(n)生成n阶魔方矩阵
+sparse(a)将矩阵a转换为稀疏矩阵形式，由a的非零元素和下标构成稀疏矩阵s。
+若a本身为稀疏矩阵，返回a本身8
+
+
+矩阵元素的修改
+D=[A;B C] A为原矩阵，B,C中包含要扩充的元素，D为扩充后的矩阵
+A(m,:)=[]删除A的第m行
+A(:,n)=[]删除A的第n列
+A(m,n)=a;对A的第m行第n列元素赋值，
+A(m,:)=[a b...];对第m
+A(:,n)=[a b ..]对第n
+
+
+矩阵的变维
+可以用: C(:)=A(:)和reshape函数调用reshape(X,m,n)将已知矩阵转为
+
+
+矩阵的变向
+Rot(90) 将A逆时针旋转90度
+Rot(90,k)将A逆时针旋转90度*k
+Fliplr(x)将x左右翻转
+flipud(x)将x上下翻转
+flipdim(x,dim)q dim=1时对行翻转 dim等于2时对列翻转
+
+
+矩阵的抽取
+diag(X,k) 抽取矩阵x的第k条对角线上的元素向量。k为0时抽取主对角线
+，k为正整数时抽取上方第k条对角线上的元素，为负抽取下方k条对角线上的元素
+diag(x)抽取主对角线
+diag(v,k)使得v为所得矩阵第k条对角线上的元素向量
+diag(v)使得v为所得矩阵对角线上的元素向量
+tril(x)提取矩阵x的主下三角部分
+tril(x,k)提取x的第k条对角线下面的部分，包括第k条对角线
+triu(x)他去上三角
+triu(x,k)他去第k调上面
+
+
+左除运算 D*X=B如果D非奇异，也就是逆矩阵inv(D)存在则
+X=inv(D)*B=D\B 分母在在左边 左除的条件：B的行数等于D的阶数，D的行数和列数相同
+右除X*D1=B1，D1非奇异X=B1*inv(D1)=B1/D1 B1的列数等于D1的阶数
