@@ -15,6 +15,10 @@ magic(n)生成n阶魔方矩阵
 sparse(a)将矩阵a转换为稀疏矩阵形式，由a的非零元素和下标构成稀疏矩阵s。
 若a本身为稀疏矩阵，返回a本身8
 
+矩阵的赋值
+x=[0:2] x= 0.00  1.00  2.00
+x=[0:2]' 转置变列向量x= 0.00  1.00  2.00
+linspace(first,last,number)包含number个元素
 
 矩阵元素的修改
 D=[A;B C] A为原矩阵，B,C中包含要扩充的元素，D为扩充后的矩阵
@@ -52,3 +56,60 @@ triu(x,k)他去第k调上面
 左除运算 D*X=B如果D非奇异，也就是逆矩阵inv(D)存在则
 X=inv(D)*B=D\B 分母在在左边 左除的条件：B的行数等于D的阶数，D的行数和列数相同
 右除X*D1=B1，D1非奇异X=B1*inv(D1)=B1/D1 B1的列数等于D1的阶数
+
+
+cond矩阵的条件数值
+condest 1-范数矩阵条件数值
+det 矩阵的行列式值
+eig 矩阵的特征值
+inv 矩阵的逆
+norm 矩阵的范数值
+normest 矩阵的2-范数值
+rank 矩阵的秩
+orth 矩阵的正交化运算
+rcond 矩阵的逆条件数值
+trace 矩阵的迹
+triu 上三角变换
+tril 下三角变换
+diag 对角变换
+exmp 矩阵的指数运算
+logm 矩阵的对数运算
+edf2rdf 复数对角矩阵转换成实数块对角矩阵
+rref 转换成逐行递减的阶梯矩阵
+rsf2csf 实数块对角矩阵转换成复数对角矩阵
+rot90 矩阵逆时针旋转90度
+fliplr 左右翻转
+flipud 上下翻转
+reshape 改变矩阵的维数
+funm 一般的矩阵函数
+
+
+奇异值分解SVD将mxn矩阵A表示为3个矩阵乘积形式USV^T其中U为mxm矩阵
+V为nxn矩阵，S为对角矩阵，其对角线元素为矩阵A的奇异值且满足s1>=s2..sr+1=..=sn=0，
+r为矩阵A的秩
+s=svd(A)返回矩阵A的奇异值向量s
+[U,S,V]=svd(A) 返回矩阵A的奇异值分解因子U，S,V
+[U,S,V]=svd(A,0) 返回mxn矩阵A的经济型奇异值分解，若m>n则只计算出矩阵U的前n列，
+矩阵S为nxn矩阵，否则同[U,S,V]=svd(A)
+
+
+eval(expression) [outputl,..,outputN]=eval(expression)
+expression是指含有有效matlab表达式的字符串，如果需要在表达式中包含数值，
+则需要使用函数int2str，num2str或者sprintf进行转换。output1，..,outputN是表达式的输出
+sym(p) p是指数值表达式
+Subs(S,old,new)将old变量替换为new变量，直接计算符号表达式与数值表达式的结果
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
