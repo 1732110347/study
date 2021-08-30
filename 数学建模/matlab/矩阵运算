@@ -19,6 +19,7 @@ sparse(a)将矩阵a转换为稀疏矩阵形式，由a的非零元素和下标构
 x=[0:2] x= 0.00  1.00  2.00
 x=[0:2]' 转置变列向量x= 0.00  1.00  2.00
 linspace(first,last,number)包含number个元素
+x=first:每份值:last 
 
 矩阵元素的修改
 D=[A;B C] A为原矩阵，B,C中包含要扩充的元素，D为扩充后的矩阵
@@ -99,6 +100,69 @@ expression是指含有有效matlab表达式的字符串，如果需要在表达�
 sym(p) p是指数值表达式
 Subs(S,old,new)将old变量替换为new变量，直接计算符号表达式与数值表达式的结果
 
+eq =(x==y)比较1等于0不等
+
+sum()列相加 sum(,2)行相加
+
+max()取列最大值 max(,2)和2比较取大的 max(,[],2)行最大
+
+abs绝对值 
+sqrt开根号
+
+ceil 往上取整数
+floor向下取整数
+fix 往0靠
+round 往最近整数靠
+
+xlabel('')在x上写标签
+
+text(x,y,'')在x，y上写标签
+
+legend('','')图例
+
+axis([x,x,y,y])控制x的范围和y
+
+grid on 网格线
+grid off 关闭
+grid minor 细网格
+
+plot3 三维
+
+[X,Y] = meshgrid(x,y) 
+基于向量 x 和 y 中包含的坐标返回二维网格坐标。
+X 是一个矩阵，每一行是 x 的一个副本；Y 也是一个矩阵，
+每一列是 y 的一个副本。坐标 X 和 Y 表示的网格有 length(y) 个行和 length(x) 个列。
+
+mesh(X,Y,Z) 创建一个网格图，该网格图为三维曲面，有实色边颜色，无面颜色。
+该函数将矩阵 Z 中的值绘制为由 X 和 Y 定义的 x-y 平面中的网格上方的高度。
+边颜色因 Z 指定的高度而异。
+
+surf(X,Y,Z) 创建一个三维曲面图，它是一个具有实色边和实色面的三维曲面。
+该函数将矩阵 Z 中的值绘制为由 X 和 Y 定义的 x-y 平面中的网格上方的高度。
+曲面的颜色根据 Z 指定的高度而变化。
+
+封装
+function area=functionname(L,W)
+area=L.*W
+
+-solid
+:dotted
+-.dashdot
+--dashed
+(none) no line
+.point
+o circle
+x x-mark
++plus
+*star
+s square
+d diamond
+v triangle(down)
+^triangle(up)
+< triangle(left)
+>triangle(right)
+p pentagram
+h hexagram
 
 
 
@@ -113,3 +177,16 @@ Subs(S,old,new)将old变量替换为new变量，直接计算符号表达式与�
 
 
 
+
+
+
+
+
+
+
+心 
+t=0:pi/180:4*pi;
+x=16*sin(t).^3;
+y=13*cos(t)-5*cos(2*t)...
+-2*cos(3*t)-cos(4*t);
+plot(x,y,'-r')

@@ -1,0 +1,49 @@
+xlabel('')在x上写标签
+
+text(x,y,'')在x，y上写标签
+
+legend('','')图例
+
+axis([x,x,y,y])控制x的范围和y
+
+-solid
+:dotted
+-.dashdot
+--dashed
+(none) no line
+.point
+o circle
+x x-mark
++plus
+*star
+s square
+d diamond
+v triangle(down)
+^triangle(up)
+< triangle(left)
+>triangle(right)
+p pentagram
+h hexagram
+
+[X,Y] = meshgrid(x,y) 
+基于向量 x 和 y 中包含的坐标返回二维网格坐标。
+X 是一个矩阵，每一行是 x 的一个副本；Y 也是一个矩阵，
+每一列是 y 的一个副本。坐标 X 和 Y 表示的网格有 length(y) 个行和 length(x) 个列。
+
+mesh(X,Y,Z) 创建一个网格图，该网格图为三维曲面，有实色边颜色，无面颜色。
+该函数将矩阵 Z 中的值绘制为由 X 和 Y 定义的 x-y 平面中的网格上方的高度。
+边颜色因 Z 指定的高度而异。
+
+surf(X,Y,Z) 创建一个三维曲面图，它是一个具有实色边和实色面的三维曲面。
+该函数将矩阵 Z 中的值绘制为由 X 和 Y 定义的 x-y 平面中的网格上方的高度。
+曲面的颜色根据 Z 指定的高度而变化。
+
+
+
+
+
+
+
+
+
+
