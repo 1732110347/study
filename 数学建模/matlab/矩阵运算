@@ -83,7 +83,12 @@ fliplr 左右翻转
 flipud 上下翻转
 reshape 改变矩阵的维数
 funm 一般的矩阵函数
-
+fgetl读取文件中的行，并删除换行符
+load 获取数据
+fopen 获取文本
+str2num - 将字符数组或字符串转换为数值数组
+fprintf - 将数据写入文本文件
+xlsread 打开excel
 
 奇异值分解SVD将mxn矩阵A表示为3个矩阵乘积形式USV^T其中U为mxm矩阵
 V为nxn矩阵，S为对角矩阵，其对角线元素为矩阵A的奇异值且满足s1>=s2..sr+1=..=sn=0，
@@ -163,6 +168,10 @@ v triangle(down)
 >triangle(right)
 p pentagram
 h hexagram
+
+polyfit(x,y,n) 返回次数为 n 的多项式 p(x) 的系数，
+该阶数是 y 中数据的最佳拟合（在最小二乘方式中）。
+p 中的系数按降幂排列，p 的长度为 n+1
 
 
 
