@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function add() {
+
+            n1 = Number(document.form1.txt1.value);
+            var a = 0, b = 0, c = 0, d = 0, e = 0;
+            a = n1 / 50;
+            b = n1 % 50 / 20;
+            c = n1 % 50 % 20 / 10;
+            d = n1 % 50 % 20 % 10 / 5;
+            e = n1 % 50 % 20 % 10 % 5 / 1;
+
+            
+            
+
+
+            document.form1.txt2.value = "50块钱"+a+"张 "+"20块钱"+b+"张 "+"10块钱"+c+"张 "+"5块钱"+d+"张 "+"1块钱"+e+"张";
+        }
+    </script>
+    <form name="form1">
+        <input name="txt1" type="text"><BR>
+
+        <input type="button" onclick="add()" value="找零"><BR>
+        <input name="txt2" type="text" style="width: 500px;"><BR>
+    </form>
+</body>
+
+</html>

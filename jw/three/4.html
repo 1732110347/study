@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function sort(){
+        var b=new Array(),l=9,per=0;
+        for(var i=0;i<=l;i++){
+        b.push(parseFloat(document.getElementById("book"+i).value));
+        per+=b[i];
+        }
+        b=b.sort(function(a,b){return a-b;});
+        document.st.min.value=b[0];
+        document.st.max.value=b[9];
+        document.st.per.value=per/(l+1);
+        }
+        </script>
+        <form name="st">
+        请输入十本书的价格：<br>
+        <input type="text" id="book0"><br>
+        <input type="text" id="book1"><br>
+        <input type="text" id="book2"><br>
+        <input type="text" id="book3"><br>
+        <input type="text" id="book4"><br>
+        <input type="text" id="book5"><br>
+        <input type="text" id="book6"><br>
+        <input type="text" id="book7"><br>
+        <input type="text" id="book8"><br>
+        <input type="text" id="book9"><br>
+        <input type="button" value="确认" onclick="sort()"><br>
+        结果为：<br>
+        最高价格为<input name="max" type="text"><br>
+        最低价格为<input name="min" type="text"><br>
+        平均价格为<input name="per" type="text"><br>
+        </form>
+</body>
+</html>

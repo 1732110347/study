@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function getPrice(operation){
+        var prices = document.getElementById("prices").value;
+        switch(operation){
+        case "max": alert("最高价格为："+eval("Math.max("+prices+")") ); break;
+        case "min": alert("最低价格为："+eval("Math.min("+prices+")") ); break;
+        case "avg":
+        var parr = prices.split(",");
+        var sum = 0;
+        var len = parr.length;
+        for(var i = 0;i<len; i++){
+        sum += parseInt(parr[i]);
+        }
+        alert("平均价格为："+sum/len );
+        break;
+        }
+        }
+        </script>
+</head>
+<body>
+    请输入10本书的价格，用逗号隔开：
+<input type="text" id="prices" />
+<br><br><br>
+<input type="button" value="最高价格" onclick="getPrice('max');"/>
+<input type="button" value="最低价格" onclick="getPrice('min');"/>
+<input type="button" value="平均价格" onclick="getPrice('avg');"/>
+</body>
+</html>
