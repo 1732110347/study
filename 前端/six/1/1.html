@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .box3 {
+            width: 100%;
+            height: 100px;
+
+        }
+
+  
+        hr{
+            height: 2px;
+            background-color: red;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>图像对齐方式应用</h2>
+<hr>
+    <div><b> 未设置对齐方式的图像：</b><br>
+        <br> <img src="./p1.jpg" alt="">PNG,图像文件存储格式，其目的是试图(原来此处用了“企图”)代替GIF和TIFF文件格式，同时增加一些GIF文件格式所不具备的特性。
+    </div><br><br>
+    <b> 已设置对齐方式的图像：</b><br><br>
+    <div class="box1">
+        PNG使用LZ77派生的一个非专利无失真式压缩算法(名为deflation)。 <img src="./p1.jpg"
+            alt=""align="bottom"/>这个算法对图像里的直线进行预测然后存储颜色差值，这使得PNG经常能获得比原始图像甚至比GIF更大的压缩率。但也有一些软件不能使用适合的预测而造成过分臃肿的PNG文件。
+    </div><br><br>
+    <div class="box2">
+        PNG使用LZ77派生的一个非专利无失真式压缩算法(名为deflation)。 <img src="./p1.jpg"
+            alt=""align="middle"/>这个算法对图像里的直线进行预测然后存储颜色差值，这使得PNG经常能获得比原始图像甚至比GIF更大的压缩率。但也有一些软件不能使用适合的预测而造成过分臃肿的PNG文件。
+    </div>
+
+    <br><br>
+    <div class="box3">
+        <img src="./p1.jpg" alt="" align="left" >
+
+       PNG使用LZ77派生的一个非专利无失真式压缩算法(名为deflation)。
+            这个算法对图像里的直线进行预测然后存储颜色差值，这使得PNG经常能获得比原始图像甚至比GIF更大的压缩率。但也有一些软件不能使用适合的预测而造成过分臃肿的PNG文件。
+        
+
+    </div>
+</body>
+
+</html>

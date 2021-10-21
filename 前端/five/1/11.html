@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--1.实验所需素材
+在trees文件夹中提供一个MP3文件和18个JPG文件，设计页面时可以使用。
+2.编程实现简易灯箱画廊，鼠标单击任一个图像超链接，在底部浮动框架中显示大图像，效果如图1所示的页面。-->
+    <title>设计简易灯箱画廊</title>
+    <style>
+        * {
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: rgb(51, 204, 153);
+        }
+
+        .box1 {
+            font-size: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        hr {
+            background-color: red;
+            height: 2px;
+        }
+
+        .box2 {
+            padding-top: 20px;
+            width: 80%;
+            height: 30%;
+            margin: auto;
+        }
+
+        .box2 div {
+            width: 16%;
+            height: 100%;
+            float: left;
+            text-align: center;
+        }
+
+        .box2 img {
+            width: 130px;
+            height: 100px;
+        }
+
+        .box2 {
+            color: rgb(24, 94, 200)
+        }
+
+        .box2 a:active {
+            border-bottom: solid 4px red;
+        }
+
+        .box2 a:hover {
+            border-bottom: solid 4px red;
+        }
+        .box3{
+            margin-top: 30px;
+            width: 100%;
+            height: 700px;
+            float: left;
+         
+            text-align: center;
+            
+        }
+        iframe{
+            width: 400px;
+            height: 300px;
+           text-align: center;
+           margin: auto;
+		   
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        简易灯箱画廊设计
+    </div>
+    <hr>
+    <div class="box2">
+        <div>T1</div>
+        <div>T2</div>
+        <div>T3</div>
+        <div>T4</div>
+        <div>T5</div>
+        <div>T6</div>
+        <div><a href="./t1.jpg" target="box3"><img src="./t1.jpg" alt=""></a></div>
+        <div><a href="./t2.jpg" target="box3"><img src="./t2.jpg" alt=""></a></div>
+        <div><a href="./t3.jpg" target="box3"><img src="./t3.jpg" alt=""></a></div>
+        <div><a href="./t4.jpg" target="box3"><img src="./t4.jpg" alt=""></a></div>
+        <div><a href="./t5.jpg" target="box3"><img src="./t5.jpg" alt=""></a></div>
+        <div><a href="./t6.jpg" target="box3"><img src="./t6.jpg" alt=""></a></div>
+    </div>
+
+    <div class="box3">
+        <iframe src=""  name="box3"  scrolling="none";></iframe>
+
+    </div>
+</body>
+
+</html>
