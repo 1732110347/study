@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .big {
+            width: 800px;
+            height: 600px;
+            background-color: rgb(234, 234, 234);
+        }
+
+        .box1 {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .box1-1 {
+            top: 14px;
+            left: 25px;
+            position: absolute;
+            font-size: 25px;
+            color: white;
+
+        }
+
+        .tr1-1 {
+            color: red;
+            position: absolute;
+            top: 15px;
+        }
+
+        .tr1-2 {
+
+            position: absolute;
+            top: 45px;
+        }
+
+        .img1 {
+            transform: rotate(90deg);
+            width:18px;
+           
+            top: -12px;
+            right: 70px;
+            position: absolute;
+        }
+        a{
+            font-size: 13px;
+            top: 49px;
+            position: absolute;
+            right: 50px;
+            color: blue;
+         
+        }
+        .table2{
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            border-bottom: none;
+            border-collapse:collapse;
+            font-size: 13px;
+        }
+        .table2 tr:nth-child(2n){
+            background-color: rgb(240, 240, 240);
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div class="big">
+        <div class="box1">
+            <div><img src="./images61-4.png" alt="">
+                <div class="box1-1">报告内容</div>
+            </div>
+        </div>
+
+        <table width=100%; height=500px; border="5" bordercolor="#E1E1E1" style="position: relative;border-spacing:0px">
+            <tr>
+                <td colspan="3" height=80px style="background-color: rgb(225, 225, 225);" >
+                    <div class="tr1-1"> 会议平台不支持WinXP系统，请大家使用Win7或Win8系统，IE或火狐浏览器登陆</div>
+                    <div class="tr1-2"><b>报告主题："持久性有机污染物分析技术"网络主题研讨会</b> </div>
+                    <img src="./images61-3.png" alt="" class="img1">
+                    <a href="">精彩回放</a>
+                </td>
+
+            </tr>
+            <tr style="background-color: rgb(234, 234, 234);color: rgb(115, 115, 115);">
+                <th width=130>会议时间</th>
+                <th>会议名称</th>
+                <th width=180>演讲人</th>
+            </tr>
+            <tr  style="background-color: rgb(251, 251, 251);">
+                <th height=340px>2015年10月14日09:30 - 17:00</th>
+                <th >
+                   <table class="table2" width=100%; height=100%; border="1" style="position: relative;border-spacing:0px">
+                       <tr>
+                          
+                           <td>中国二恶英排放清单研究</td>
+                       </tr>
+                       <tr>
+                          
+                        <td>优化的PAHs和Dioxin分析仪在环境分析中的应用</td>
+                    </tr>
+                    <tr>
+                          
+                        <td>LCMS在持久性有机污染物分析中的研究进展</td>
+                    </tr>
+                    <tr>
+                          
+                        <td>质谱技术在持久性有机污染物的分析方法</td>
+                    </tr>
+                    <tr>
+                          
+                        <td>持久性有机污染物POPs的前处理技术</td>
+                    </tr>
+                    <tr>
+                          
+                        <td>极地持久性有机污染物研究进展</td>
+                    </tr>
+                   </table>
+                </th>
+                <th>
+                    <table class="table2 " width=100%; height=100%; border="1" style="position: relative;border-spacing:0px">
+                        <tr >
+                           
+                            <td height=54px>刘文彬 研究员（中国科学院生态研究中心）</td>
+                        </tr>
+                        <tr>
+                           
+                         <td height=54px>孔晔（安捷伦）</td>
+                     </tr>
+                     <tr>
+                           
+                         <td height=54px>朱怀恩（SCIEX）</td>
+                     </tr>
+                     <tr>
+                           
+                         <td height=54px>陈志凌（岛津）</td>
+                     </tr>
+                     <tr>
+                           
+                         <td height=54px>苏丽评（莱伯泰科）</td>
+                     </tr>
+                     <tr>
+                           
+                         <td height=54px>张庆华 研究员（中国科学院生态研究中心）</td>
+                     </tr>
+                    </table>
+                </th>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

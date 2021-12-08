@@ -1,0 +1,345 @@
+
+CREATE TABLE XXXX()建表
+
+INSERT INTO XX(XX,XX,XX)插入信息
+VALUES('XX','XX','X')
+
+query查询
+insert插入
+delete删除
+update修改
+
+COUNT对元组计数
+TOTAL求总和
+MAX求最大值
+MIN求最小值
+AVG求平均值
+
+CREATE 创建
+DROP 删除
+ALTER 修改
+
+SCHEMA 模式
+TABLE 表
+VIEW 视图
+INDEX 索引
+
+3.3
+sql功能     动词
+数据查询    SELECT
+数据定义    CREATE,DROP,ALTER
+数据操纵    INSERT,UPDATE,DELETE
+数据控制    GRANT,REVOKE
+
+
+Student 学生表
+学号   姓名   性别   年龄   所在系
+Sno   Sname   Ssex  Sage   Sdept
+
+Course 课程表
+课程号  课程名     先行课   学分
+Cno     Cname      Cpno    Ccredit
+
+SC 学生选课表
+学号    课程号      成绩
+Sno     Cno         Grade
+
+
+CREATE SCHEMA 模式名 AUTHORIZATION 用户名 表定义子句或 视图定义子句
+
+删除
+DROP SCHEMA 模式名 CASCADE或者RESTRICT;
+CASCADE级联 表示删除所有
+RESTRICT限制 如果有东西就不删除
+
+
+3.3.2 基本表的定义、删除与修改
+
+
+3.3.2 1定义基本表
+
+建立
+CREATE TABLE 表名 
+(列名 数据类型 列级完整性约束条件，
+表级完整性约束条件
+FOREIGNN KEY (Cpno) REFERENCES Course(Cno)
+Cpno是外码，被参照的表是Course,被参照的列是Cno
+)
+
+非空约束(not null)：用not null约束的字段不能为null值，必须给定具体的数据
+唯一性约束(unique)： unique约束的字段，具有唯一性，不可重复，但可以为null
+主键约束(主码)(primary key) PK  如有两个主码 PRIMARY KEY (Sno,Cno),
+外键约束(foreign key) FK
+检查约束(目前MySQL不支持、Oracle支持)
+
+
+3.3.2 2数据类型
+
+CHAR(n),CHARACTER(n)            长度为n的定长字符串
+VARCHAR(n),CHARACTERVARYING(n)  最大长度为n的变长字符串
+CLOB                            字符串大对象
+BLOB                            二进制大对象
+INT,INTEGER                     长整数(4字节)
+SMALLINT                        短整数(2字节)
+BIGINT                          大整数(8字节)
+NUMERIC(p,d)                    定点数，由p位数字(不包括符号、
+                                小数点)组成，小数点后面有d位数字
+DECIMAL(p,d),DEC(p,d)           同NUMERIC
+REAL                            取决于机器精度的单精度浮点数
+DOUBLE PRECISION                取决于机器精度的双精度浮点数   
+FLOAT(n)                        可选精度的浮点数，精度至少为n位数字
+BOOLEAN                         逻辑布尔量
+DATE                            日期，包含年、月、日，格式为YYY-MM-DD
+TIME                            时间，包含一日的时、分、秒，格式为HH:MM:SS
+TIMESTAMP                       时间戳类型
+INTERVAL                        时间间隔类型
+
+
+3.3.2 3模式与表
+每一个基本表都属于某一个模式
+一个模式包含多个基本表
+定义基本表所属模式
+方法一：在表名中明显地给出模式名 
+Create table"S-T".Student(......);     /*模式名为 S-T*/
+Create table "S-T".Cource(......);
+Create table "S-T".SC(......); 
+方法二：在创建模式语句中同时创建表 
+方法三：设置所属的模式 
+
+
+3.3.2 4修改基本表
+
+ALTER TABLE <表名>
+[ ADD[COLUMN] <新列名> <数据类型> [ 完整性约束 ] ]
+[ ADD <表级完整性约束>]
+[ DROP [ COLUMN ] <列名> [CASCADE| RESTRICT] ]
+[ DROP CONSTRAINT<完整性约束名>[ RESTRICT | CASCADE ] ]
+[ALTER COLUMN <列名><数据类型> ] ;
+
+ADD子句用于增加新列、新的列级完整性约束条件和新的表级完整性约束条件
+DROP COLUMN子句用于删除表中的列
+如果指定了CASCADE短语，则自动删除引用了该列的其他对象
+如果指定了RESTRICT短语，则如果该列被其他对象引用，关系数据库管理系统将拒绝删除该列
+DROP CONSTRAINT子句用于删除指定的完整性约束条件
+ALTER COLUMN子句用于修改原有的列定义，包括修改列名和数据类型
+
+增加“入学时间”列，其数据类型为日期型
+ALTER TABLE Student ADD S_entrance DATE;
+增加课程名称必须取唯一值的约束条件。
+ALTER TABLE Course ADD UNIQUE(Cname); 
+
+
+将年龄的数据类型由字符型（假设原来的数据类型是字符型）改为整数。
+ALTER TABLE Student ALTER COLUMN Sage INT;
+
+3.3.2 5删除基本表
+DROP TABLE <表名>［RESTRICT| CASCADE］;
+RESTRICT：删除表是有限制的。
+欲删除的基本表不能被其他表的约束所引用
+如果存在依赖该表的对象，则此表不能被删除
+CASCADE：删除该表没有限制。
+在删除基本表的同时，相关的依赖对象一起删除 
+
+DROP TABLE  Student  CASCADE;
+基本表定义被删除，数据被删除
+表上建立的索引、视图、触发器等一般也将被删除 
+
+
+3.3.3 索引的建立与删除
+
+建立索引的目的：加快查询速度
+关系数据库管理系统中常见索引：
+顺序文件上的索引
+B+树索引
+散列（hash）索引
+位图索引
+特点：
+B+树索引具有动态平衡的优点 
+HASH索引具有查找速度快的特点
+
+
+CREATE [UNIQUE] [CLUSTER] INDEX <索引名> 
+ON <表名>(<列名>[<次序>][,<列名>[<次序>] ]…);
+<表名>：要建索引的基本表的名字
+索引：可以建立在该表的一列或多列上，各列名之间用逗号分隔
+<次序>：指定索引值的排列次序，升序：ASC，降序：DESC。缺省值：ASC
+UNIQUE：此索引的每一个索引值只对应唯一的数据记录
+CLUSTER：表示要建立的索引是聚簇索引
+
+
+Student表按学号升序建唯一索引，Course表按课程号升序建唯一索引，SC表按学号升序和课程号降序建唯一索引
+     
+   CREATE UNIQUE INDEX  Stusno ON Student(Sno);
+   CREATE UNIQUE INDEX  Coucno ON Course(Cno);
+   CREATE UNIQUE INDEX  SCno ON SC(Sno ASC,Cno DESC);
+
+
+ALTER INDEX <旧索引名> RENAME TO <新索引名>
+
+[例3.14] 将SC表的SCno索引名改为SCSno
+	ALTER INDEX SCno RENAME TO SCSno;
+
+
+DROP INDEX <索引名>;
+删除索引时，系统会从数据字典中删去有关该索引的
+描述。
+[例3.15]  删除Student表的Stusname索引
+	        DROP INDEX Stusname;
+
+3.3.4 数据字典
+数据字典是关系数据库管理系统内部的一组系统表，它记录了数据库中所有定义信息：
+关系模式定义
+视图定义
+索引定义
+完整性约束定义
+各类用户对数据库的操作权限
+统计信息等
+关系数据库管理系统在执行SQL的数据定义语句时，实际上就是在更新数据字典表中的相应信息。
+
+
+
+3.4数据查询
+
+       SELECT [ALL|DISTINCT] <目标列表达式>[,<目标列表达式>] …
+       FROM <表名或视图名>[,<表名或视图名> ]…|(SELECT 语句)      
+                   [AS]<别名>
+[ WHERE <条件表达式> ]
+[ GROUP BY <列名1> [ HAVING <条件表达式> ] ]
+[ ORDER BY <列名2> [ ASC|DESC ] ];
+
+SELECT子句：指定要显示的属性列
+FROM子句：指定查询对象（基本表或视图）
+WHERE子句：指定查询条件
+GROUP BY子句：对查询结果按指定列的值分组，该属性列值相等的元组为一个组。通常会在每组中作用聚集函数。
+HAVING短语：只有满足指定条件的组才予以输出
+ORDER BY子句：对查询结果表按指定列值的升序或降序排序 
+
+
+3.4.1 单表查询
+
+查 询 条 件	               谓    词
+比    较	                  =, >, <, >=, <=, !=, <>, !>, !<
+确定范围	                  BETWEEN AND, NOT BETWEEN AND
+确定集合	                  IN, NOT IN
+字符匹配	                  LIKE, NOT LIKE
+空    值	                  IS NULL, IS NOT NULL
+多重条件（逻辑运算）	       AND, OR, NOT
+
+
+谓词： [NOT] LIKE  ‘<匹配串>’  [ESCAPE ‘ <换码字符>’]
+
+<匹配串>可以是一个完整的字符串，也可以含有通配符%和 _
+
+% （百分号）  代表任意长度（长度可以为0）的字符串
+例如a%b表示以a开头，以b结尾的任意长度的字符串
+_ （下横线）  代表任意单个字符。
+例如a_b表示以a开头，以b结尾的长度为3的任意字符串
+
+
+ 使用换码字符将通配符转义为普通字符
+ 
+ [例3.34]  查询DB_Design课程的课程号和学分。
+      SELECT Cno，Ccredit
+      FROM     Course
+      WHERE  Cname LIKE 'DB\_Design' ESCAPE '\ ' ;
+[例3.35]  查询以"DB_"开头，且倒数第3个字符为 i的课程的详细情况。
+      SELECT  *
+      FROM    Course
+      WHERE  Cname LIKE  'DB\_%i_ _' ESCAPE '\ ' ;
+	
+	ESCAPE '＼' 表示“ ＼” 为换码字符
+
+  
+  聚集函数：
+统计元组个数
+     COUNT(*)
+统计一列中值的个数
+     COUNT([DISTINCT|ALL] <列名>)
+计算一列值的总和（此列必须为数值型）
+SUM([DISTINCT|ALL] <列名>)	
+计算一列值的平均值（此列必须为数值型）
+AVG([DISTINCT|ALL] <列名>)
+求一列中的最大值和最小值
+ 	 MAX([DISTINCT|ALL] <列名>)
+	 MIN([DISTINCT|ALL] <列名>)
+
+
+
+
+一个SELECT-FROM-WHERE语句称为一个查询块
+将一个查询块嵌套在另一个查询块的WHERE子句或HAVING短语的条件中的查询称为嵌套查询
+
+     SELECT Sname	                           /*外层查询/父查询*/
+     FROM Student
+     WHERE Sno IN
+                        ( SELECT Sno        /*内层查询/子查询*/
+                          FROM SC
+                          WHERE Cno= ' 2 ');
+上层的查询块称为外层查询或父查询
+下层查询块称为内层查询或子查询
+SQL语言允许多层嵌套查询
+即一个子查询中还可以嵌套其他子查询
+子查询的限制
+不能使用ORDER BY子句
+不相关子查询：
+    子查询的查询条件不依赖于父查询
+由里向外逐层处理。即每个子查询在上一级查询处理之前求解，子查询的结果用于建立其父查询的查找条件。
+
+相关子查询：子查询的查询条件依赖于父查询
+首先取外层查询中表的第一个元组，根据它与内层查询相关的属性值处理内层查询，若WHERE子句返回值为真，则取此元组放入结果表
+然后再取外层表的下一个元组
+重复这一过程，直至外层表全部检查完为止
+
+
+
+使用ANY或ALL谓词时必须同时使用比较运算
+语义为：
+      > ANY	大于子查询结果中的某个值       
+> ALL	大于子查询结果中的所有值
+< ANY	小于子查询结果中的某个值    
+< ALL	小于子查询结果中的所有值
+>= ANY	大于等于子查询结果中的某个值    
+>= ALL	大于等于子查询结果中的所有值
+<= ANY	小于等于子查询结果中的某个值    
+<= ALL	小于等于子查询结果中的所有值
+= ANY	等于子查询结果中的某个值        
+=ALL	等于子查询结果中的所有值（通常没有实际意义）
+!=（或<>）ANY	不等于子查询结果中的某个值
+!=（或<>）ALL	不等于子查询结果中的任何一个值
+
+
+
+集合操作的种类
+并操作UNION
+交操作INTERSECT
+差操作EXCEPT
+参加集合操作的各查询结果的列数必须相同;对应项的数据类型也必须相同 
+
+
+子查询不仅可以出现在WHERE子句中，还可以出现在FROM子句中，这时子查询生成的临时派生表（Derived Table）成为主查询的查询对象
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

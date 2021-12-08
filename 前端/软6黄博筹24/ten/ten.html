@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 950px;
+            height: 780px;
+           
+        }
+
+        .top {
+            width: 100%;
+            height: 120px;
+
+            position: relative;
+        }
+
+        .top1 {
+            position: absolute;
+            top: 30px;
+            left: 50px;
+        }
+
+        .top2 {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+        }
+
+        .top2 div {
+            float: left;
+            margin-left: 80px;
+        }
+
+        .top2-1 {
+            bottom: 3px;
+            left: -45px;
+            position: absolute;
+
+        }
+
+        .top2-2 {
+            bottom: 3px;
+            left: 10px;
+            position: absolute;
+
+        }
+
+        .top2-3 {
+            bottom: 3px;
+            left: 108px;
+            position: absolute;
+
+        }
+
+        .top2-4 {
+            bottom: 3px;
+            left: 195px;
+            position: absolute;
+
+        }
+
+        .top2-5 {
+            bottom: 3px;
+            left: 256px;
+            position: absolute;
+
+        }
+
+        .top2-6 {
+            bottom: 3px;
+            left: 347px;
+            position: absolute;
+
+        }
+
+        .big {
+            position: absolute;
+            left: 50px;
+            
+        }
+
+        .left {
+            width: 25px;
+            height: 550px;
+            background-image: repeating-linear-gradient(to right, rgb(107, 98, 98), rgb(248, 248, 248));
+            float: left;
+        }
+
+        .right {
+            width: 25px;
+            height: 550px;
+            background-image: repeating-linear-gradient(to right, rgb(248, 248, 248), rgb(107, 98, 98));
+            float: left;
+        }
+
+        .big2 {
+            left: 51px;
+            position: absolute;
+            width: 20px;
+            height: 550px;
+            background-image: repeating-linear-gradient(to right, rgb(107, 98, 98), rgb(255, 255, 255));
+        }
+
+        .big3 {
+            left: 71px;
+            position: absolute;
+            width: 820px;
+            height: 550px;
+            background-color: white;
+        }
+        .bottom{
+            width: 900px;
+            height: 60px;
+            background-color: black;
+            position: absolute;
+            left: 35px;
+            bottom: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="top">
+            <div class="top1">
+                <img src="./logo.jpg" alt="">
+
+            </div>
+            <div class="top2">
+                <div class="top2-1">首页</div>
+                <div><img src="./line.jpg" alt=""></div>
+                <div class="top2-2">我的作品</div>
+                <div><img src="./line.jpg" alt=""></div>
+                <div class="top2-3">日志</div>
+                <div><img src="./line.jpg" alt=""></div>
+                <div class="top2-4">相册</div>
+                <div><img src="./line.jpg" alt=""></div>
+                <div class="top2-5">在线留言</div>
+                <div><img src="./line.jpg" alt=""></div>
+                <div class="top2-6">联系我</div>
+                <div><img src="./line.jpg" alt=""></div>
+            </div>
+        </div>
+
+        <div class="big">
+            <div class="big1">
+                <div class="left">
+                </div>
+                <div class="right"></div>
+
+            </div>
+            <div class="big2">
+
+            </div>
+            <div class="big3"><br>
+                <form action="">
+                    用户名： <input type="text"><br><br>
+                    密码：<input type="password"><br>
+                    <input type="submit" value="登录"> 注册
+                    <br>
+                    <br>
+                    <div style="padding-left: 40px;"><b>最近更新作品</b> </div>
+                    <ol>
+                        <li>植物成长</li><br>
+                        <li>小麦</li><br>
+                        <li>相册相框</li><br>
+                        <li>迷你小手机</li><br>
+                        <li>我的遐想</li><br>
+                        <li>攀爬高山</li><br>
+                        <li>小挎包</li><br>
+                        <li>小鸟的家</li>
+                    </ol>
+                    <input type="text"> <input type="submit" value="搜索">
+                </form>
+                <div style="position: absolute;top: 0px;right: 0px;"><img src="./img.jpg" alt=""></div>
+            </div>
+
+         
+           
+        </div>
+        <div class="bottom" style="color: white;font-size: 20px;text-align: center;">
+           <div style="padding-top: 15px;">
+            <span>Home</span>&nbsp;&nbsp;
+            <span>|</span>&nbsp;&nbsp;
+            <span>About</span>&nbsp;&nbsp;
+            <span>|</span>&nbsp;&nbsp;
+            <span>Friends</span>&nbsp;&nbsp;
+            <span>|</span>&nbsp;&nbsp;
+            <span>Hobby</span>&nbsp;&nbsp;
+            <span>|</span>&nbsp;&nbsp;
+            <span>Music</span>&nbsp;&nbsp;
+            <span>|</span>&nbsp;&nbsp;
+            <span>News</span>&nbsp;&nbsp;
+            <span>|</span>&nbsp;&nbsp;
+            <span>Contact me</span>
+           </div>
+          
+        </div>
+    </div>
+</body>
+
+</html>

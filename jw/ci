@@ -1,0 +1,244 @@
+ //获得参数m，赋值给str
+    String str = request.getParameter("m");
+
+<%@ page pageEncoding="编码类名" %>
+
+
+在发生异常的页面上写：
+    <%@ page errorPage="anErrorPage.jsp" %> 
+ 如果页面发生异常，则自动跳转到anErrorPage.jsp
+    在anErrorPage.jsp页面上写：
+    <%@ page isErrorPage="true" %>
+ 表示这是一个处理异常的页面
+
+<%@ include file="文件名"%>
+jsp:include page=""
+
+5
+request.setCharacterEncoding("utf-8");
+
+捆绑表单元素数据的获取
+ 具体获得方法和一般表单元素类似，但在获取数据时，利用request.getParameterValues("表单元素名")方法来获得字符串数组。
+
+method 属性设置为 post
+
+ <%@ page language="java" contentType="text/html; charset= utf-8 "%> 
+
+
+6
+ java.sql.Connection：负责连接数据库 
+ java.sql.Statement：负责执行数据库 SQL 语句
+ java.sql.ResultSet：负责存放查询结果
+
+ 加载驱动类
+Class.forName(com.mysql.cj.jdbc.Driver);
+
+创建一个数据库连接
+Connection conn = DriverManager.getConnection(jdbc:mysql://localhost:3306/student, username, password);
+
+2、使用 Statement 接口运行 SQL 语句
+ Statement stat = conn.createStatement(); 
+ stat.executeQuery(SQL 语句);//查询
+ 或者 
+ stat.executeUpdate(SQL 语句);//添加、删除或修改 
+
+ 3、处理 SQL 语句运行结果，这和具体的操作有关，后面详述
+ 4、关闭数据库连接：
+ stat.close(); 
+ conn.close(); 
+
+
+ResultSet
+
+ int i = stat.executeUpdate(sql); 
+
+PreperedStatement 的 setString(n,参数)
+
+  参数为false表示关闭自动提交。
+ conn.setAutoCommit(false);
+
+ 当所有的SQL语句都执行成功后，调用Connection的commit()方法来提交事务。
+ 例如：conn.commit();
+ 任意一条SQL语句执行失败，则调用Connection的rollback()方法来回滚事务。
+ 例如：conn.rollback();
+
+
+7
+
+out 对象，对应的类型是    javax.servlet.jsp.JspWriter
+ void close()：关闭输出流，从而可以强制终止当前页面的剩余部分向浏览器输出
+ void clearBuffer()：清除缓冲区里的数据，并且把数据写到客户端去
+ void clear()：清除缓冲区里的数据，但不把数据写到客户端去
+ int getRemaining()：获取缓冲区中没有被占用 的空间的大小
+ void flush()：输出缓冲区的数据。out.flush()函数也会清除缓冲区中的数据，但是此函数先将之前缓冲区的数据输出至客户端，然后再清除缓冲区的数据
+ int getBufferSize()：获得缓冲区的大小
+
+request对应类型是 javax.servlet.http.HttpServletRequest
+ request包含的方法
+ String getMethod()：得到提交方式
+ String getRequestURI()：得到请求的 URL 地址
+ String getProtocol()：得到协议名称
+ String getServletPath()：获得客户端请求服务器文件的路径
+ String  getQueryString()：得到 URL 的查询部分，对 post 请求来说，该方法得不到任何信息
+ String getServerName()：得到服务器的名称
+ String getServerPort()：得到服务器口号
+ String getRemoteAddr()：得到客户端的 IP 地址
+
+response 可以理解为服务器对客户端的响应，request可以理解为客户端发送给服务器的请求，二者所表示范围是相对应的2 个部分，具有很好的对称性。 
+ response  对应的类(接口)是：javax.servlet.http.HttpServletResponse。可以通过查找文档中javax.servlet.http.HttpServletResponse 
+
+重定向：相当于客户端重新发送请求
+ response.sendRedirect(目标页面路径);
+ 转向：相当于在服务器端直接转向另一个页面：
+ <jsp:forward page=""></jsp:forward> 
+
+Cookie 操作主要用到以下几个方法：
+ response.addCookie(Cookie c)：通过该方法，将 Cookie 写入（发送给）客户端。
+ Cookie.setMaxAge(int second)：通过该方法，设置 Cookie 的存活时间。参数表示存活的秒数
+
+ 从客户端获取 Cookie 内容，主要通过以下方法：
+  Cookie[]  request.getCookies()：读取客户端传过来的 Cookie，以数组形式返回
+
+
+8
+session，是JSP九大内置对象之一，它对应的类(接口)是：
+ javax.servlet.http.HttpSession。
+
+将内容放入session对象中
+ void setAttribute(String name,Object obj)
+ 参数1：name是为放入session的对象(属性attribute，商品)起的名字 (标记)；
+ 参数2：obj，放入session中的对象（商品）本身
+
+ 读取session对象中的内容
+ Object getAttribute(String name)
+ 该方法表示根据name取出已经存进session的对象；
+ 返回值就是取出的对象。
+
+ 移除 session 中的内容的方法
+ void removeAttribute(String name)
+ 将属性名为name的内容从session中移除。
+ void session.invalidate()
+ 移除 session 中的全部内容
+
+
+ 对于每一个 session，服务器端都有一个sessionId 来标识它，可以通过以下方法获得：
+ String  session.getId()
+
+javax.servlet.ServletContext 
+
+ application 对象的 API 主要有以下几个：
+ 将内容放入 application 
+ void application.setAttribute(String name,Object obj); 
+ 读取 application 中的内容
+ Object application.getAttribute(String name);
+ 将内容从 application 中移除
+ void application.removeAttribute(String name);
+
+9
+Servlet
+
+destroy()方法在 Servlet 实例消亡时自动调用
+
+ 获得 out 对象
+ PrintWriter out=response.getWriter();
+
+public void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException { 
+	//将 request 参数当成 request 对象使用 
+	//将 response 参数当成 response 对象使用 
+	}  
+
+获得 session 对象
+	HttpSession session = request.getSession();
+           //将session当成session对象来使用
+
+获得 application 对象
+ 	ServletContext application = this.getServletContext(); 
+	//将 application 当成 application 对象来使用 
+
+
+1、设置全局参数，该参数所有的 Servlet 都可以访问
+ 	<context-param> 
+	<param-name>参数名</param-name> 
+	<param-value>参数值</param-value> 
+	</context-param> 
+
+ 2、设置局部参数，该参数只有相应的 Servlet 才能访问
+ <servlet> 
+	<servlet-name>Servlet 名称</servlet-name> 
+	<servlet-class>Servlet 类路径</servlet-class> 
+	<init-param> 
+	<param-name>参数名</param-name> 
+	<param-value>参数值</param-value> 
+	</init-param> 
+ </servlet> 
+
+在Servlet的doGet或doPost方法中获取全局参数的方法是：
+    ServletContext application = this.getServletContext(); 
+	application.getInitParameter("参数名称");
+ 
+ 在Servlet的doGet或doPost方法中获取局部参数的方法是：
+   	this.getInitParameter("参数名称"); 
+ *此处的 this 是指 Servlet 本身
+
+
+ 情况一：让所有的请求都经过过滤器，过滤器中处理中文乱码问题：
+ request.setCharacterEncoding(“gb2312”); response.setContentType(“text/html;charset=gb2312”); 
+ 情况二：让所有访问登录后页面的请求经过过滤器，过滤器检查是否登录，并可以判断用户权限。
+ HttpSession session=((HttpServletRequest)request).getSession();
+ //获取session对象，看里面有没有存储登录成功的用户信息
+
+
+1、定义过滤器类： 
+ 实现接口 javax.servlet.Filter;
+ 实现 3 个方法
+  初始化方法：表示的是过滤器初始化时的动作。 
+ public void init(FilterConfig config) ; 
+ 消亡方法：表示的是过滤器消亡时候的动作。 
+ public void destroy() ; 
+ 过滤函数：表示的是过滤器过滤时的动作。 
+ public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) ;
+
+
+（1）先用用<filter>元素为类定义过滤器名字 
+	   <filter-name>元素用来设定过滤器的名字 
+     <filter- class >元素用来设定过滤器的类路径
+ （2）用<filter-mapping>配置过滤器过滤哪些文件
+ 过滤所有文件 
+	<filter-mapping> 
+	 <filter-name>FilterName</filter-name> 
+	 <url-pattern>/*</url-pattern> 
+  </filter-mapping> 
+
+
+
+10
+
+ 1、创建JavaBean对象（两种方式） 
+ （1）直接在 JSP 中实例化 JavaBean
+ <% Student student = new Student(); 
+	 //使用 student 
+ %> 
+ （2）使用<jsp:useBean>标签获取对象
+ <jsp:useBean id="idName" class="package.class" scope="page|session"> 
+ </jsp:useBean>
+
+ 2、设置 JavaBean 属性
+ （1）直接编写 Java 代码
+	<% 	student.setStuname("张华"); 	%> 
+ （2）使用<jsp:setProperty>标签
+ <jsp:setProperty property="属性名称" name="bean对象名" value="常量" />
+
+ 3、获取 JavaBean 属性
+ （2）使用 jsp:getProperty 动作
+ <jsp:getProperty property="属性名称" name="bean 对象名" /> 
+
+
+
+
+
+
+
+
+
+
+

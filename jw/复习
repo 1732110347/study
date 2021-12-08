@@ -1,0 +1,489 @@
+
+
+
+
+
+
+
+
+
+4jsp基本语法
+ JSP 注释语法: <%--  注释内容  --%> 
+ Java 代码注释：//注释内容 	/* 注释内容 */ 
+
+ JSP 表达式的作用是定义 JSP 的一些输出。表达式基本语法如下所示：
+ 	<%=变量/返回值/表达式%>  
+ JSP 表达式的作用是将其里面内容所运算的结果输出到客户端
+ JSP 表达式中不能用";"结束
+ 在 JSP 表达式中不能出现多条语句
+ JSP表达式的内容一定是字符串类型，或者能通过 toString()方法转换成字符串的形式
+
+ JSP 程序段的用法如下： 
+	<% Java 代码  %> 
+ 不能在 JSP 程序段中定义方法。
+ JSP中可以放入HTML，也可以放入JSP程序段和JSP表达式，可以灵活地混合使用。
+
+ jSP 中提供了声明，JSP 声明中可以定义网页中的全局变量，这些变量在 JSP 页面中的任何地方都能够使用。
+ 在实际的应用中，方法、页面全局变量、甚至类的声明都可以放在 JSP 声明部分 。
+
+ 使用方法如下： 
+	<%!    代码    %> 
+ 可以看到其与 JSP 程序段的用法相似(只是多了一个感叹号)，但功能却有所不同。
+ 在 JSP 程序段中定义的变量只能先声明后使用。
+ 而 JSP 声明中定义的变量是网页级别的，系统会优先执行，也就是说使用 JSP 声明可以在 JSP 的任何地方定义变量。
+
+
+ 格式是，在原url后面添加：
+   ?参数名1=参数值1&参数名2=参数值2&……
+ 如：
+  http://localhost:8080/Prj04/page.jsp?m=3&n=5
+ 表示访问http://localhost:8080/Prj04/page.jsp，并给其传送参数m，值为3，参数n，值为5。
+
+ 在http://localhost:8080/Prj04/page.jsp中获得m和n的方法是：
+ <%
+    //获得参数m，赋值给str
+    String str = request.getParameter("m");
+ %>
+
+
+ page 指令的作用有：
+ 导入包：
+ <%@ page import="包名.类名" %> 
+ 设定字符集：
+ <%@ page pageEncoding="编码类名" %>
+ 设定 MIME 类型和字符编码 :   
+ <%@ page contentType="MIME 类型; charset=字符编码"%> 
+ 
+ 设定错误页面： 
+ 例如：
+ 在发生异常的页面上写：
+    <%@ page errorPage="anErrorPage.jsp" %> 
+ 如果页面发生异常，则自动跳转到anErrorPage.jsp
+    在anErrorPage.jsp页面上写：
+    <%@ page isErrorPage="true" %>
+ 表示这是一个处理异常的页面
+
+ include指令可以在JSP程序中插入多个外部文件，这些文件可以是JSP、HTML或者Java程序，甚至是文本。
+ 编译时，include指令就会把相应的文件包含进主文件,相当于把外部文件内容复制进主文件。其语法格式如下：
+ <%@ include file="文件名"%>
+
+
+ include动作和include指令的区别？二者效果相同，实现原理不同。
+ 1.include动作只会把文件中的输出包含进来。被包含的文件和主文件是各自独立的，不会在编译阶段合并。只是最终输出结果的合并。所以允许两个文件有重名的Java变量。
+ 2. include指令先复制文件进来，形成一个文件后再编译。所以两个文件中不能有重名的Java变量。
+ 二者的区别通过查看JSP文件编译后的Java代码可以看出来。
+
+
+ SP动作包括：
+ 1. jsp:include：当页面被请求的时候动态引入一个文件。
+ 2. jsp:forward：将请求转到另外一个页面。
+ 3. jsp:useBean：获得JavaBean的一个实例。
+  4. jsp:setProperty：设置JavaBean的属性。
+ 5. jsp:getProperty：获得JavaBean的属性。 
+ 6. jsp:plugin根据浏览器类型为Java插件生成OBJECT或EMBED两种标记。
+
+
+
+5表单开发
+
+ 文本框、密码框、多行文本框、单选按钮和下拉列表，其中的内容的获取方法均相同，利用request.getParameter("表单元素名")方法获得一个字符串。
+ 表单还有一个属性是method，该属性设置了表单的提交方式，常用取值有两个：get和post，其中get是默认省略值。
+ 当表单的提交方式为get时，表单提交值可以在地址栏看到
+ 当表单的提交方式为post时，表单提交值在地址栏看不到,但是注意，可能还会出现中文乱码问题（参看案例看怎么解决）。
+
+ request.setCharacterEncoding("utf-8") 乱码
+
+
+ 捆绑表单元素数据的获取
+ 具体获得方法和一般表单元素类似，但在获取数据时，利用request.getParameterValues("表单元素名")方法来获得字符串数组。
+
+ 在form表单中，input 标签的属性 type 的值如果是“hidden”，它表示隐藏在网页中的一个表单元素，并不在网页中显示出来。
+ 此时传递隐藏表单的值，浏览器地址栏上的地址数据还是能够被看到。
+ 解决该问题的方法是将 form 的 method 属性设置为 post(默认为 get)
+
+
+ 页面显示中文乱码
+ 把文件头上的字符集设置为中文字符集。一定要保证文件头上写明：   
+ <%@ page language="java" pageEncoding=“utf-8"%> 
+ 或	
+ <%@ page language="java" contentType="text/html; charset= utf-8 "%> 
+
+6jdbc
+ JDBC中以下类或接口
+  java.sql.Connection：负责连接数据库 
+ java.sql.Statement：负责执行数据库 SQL 语句
+ java.sql.ResultSet：负责存放查询结果
+
+  加载驱动类，，使用Class类的forName()静态方法来加载数据库的驱动类
+ 同数据库或者驱动包版本不同，其中的驱动类名是不一样：
+ 该例中是My SQL数据库的驱动类
+ MySQL的jdbc  Connector J 8.0驱动类是： com.mysql.cj.jdbc.Driver
+ Microsoft SQL Server的jdbc的驱动类是：
+                 com.microsoft.sqlserver.jdbc.SQLServerDriver
+ Oracle的jdbc 驱动类是：oracle.jdbc.driver.OracleDriver
+
+ 在使用JDBC操作数据库之前，需要先创建一个数据库连接
+ DriverManager.getConnection(String url,String user,String pass);
+ getConnection()方法有三个参数
+ url：数据库连接字符串
+ user：连接数据库的用户名
+ pass：密码
+
+ jdbc:mysql://localhost:3306/student?useSSL=false&serverTimezone=GMT%2B8&characterEncoding=UTF-8
+ 协议： jdbc:mysql
+ 主机：localhost:3306
+ 数据库：student
+ 属性，属性之间用&符号隔开：
+ useSSL=false  表示不使用SSL
+ serverTimezone=GMT%2B8  时区为东八区
+ characterEncoding=UTF-8  编码方式为UTF8，解决中文乱码问题
+
+ 2、使用 Statement 接口运行 SQL 语句
+ Statement stat = conn.createStatement(); 
+ stat.executeQuery(SQL 语句);//查询
+ 或者 
+ stat.executeUpdate(SQL 语句);//添加、删除或修改 
+
+ 3、处理 SQL 语句运行结果，这和具体的操作有关，后面详述
+ 4、关闭数据库连接：
+ stat.close(); 
+ conn.close(); 
+
+
+ 游标
+ 是在 ResultSet 中一个可以移动的指针，它指向一行数据。初始时指向第一行的前一行，实际上不指向任何数据。
+ rs.next()可以将游标移到下一行，它的返回值是一个布尔类型，即如果下一行有数据则返回为 true，否则为 flase。很明显，可以使用 rs.next()配上 while 循环来对结果进行遍历
+ 当游标指向某一行，可以通过 ResultSet 的 getXXX("列名")方法得到这一行的某个数据， XXX 是该列的数据类型，可以是 String，也可以是 int 等
+ 除了通过列名获得数据外，还可以通过列的编号来获得，列编号从1开始
+
+ int i = stat.executeUpdate(sql); 
+   它返回一个整型，意思为这条 sql 语句执行受影响的行数，即成功添加的条数
+
+
+ PreparedStatement  是 Statement 的子接口，功能与 Statement 类似
+ 它在 sql 语句中使用了 ? 代替了需要插入的参数
+ 用 PreperedStatement 的 setString(n,参数)方法可以将第 n 个 ? 用传进的参数代替。这样做增加了程序的可维护性，也增加了程序的安全性
+
+  参数为false表示关闭自动提交。
+ conn.setAutoCommit(false);
+
+ 当所有的SQL语句都执行成功后，调用Connection的commit()方法来提交事务。
+ 例如：conn.commit();
+ 任意一条SQL语句执行失败，则调用Connection的rollback()方法来回滚事务。
+ 例如：conn.rollback();
+
+
+7.内置对象1
+ 
+ JSP 规范中定义了九种内置对象
+ out 对象：负责管理对客户端的输出
+ request 对象：负责得到客户端的请求信息
+ response 对象：负责向客户端发出响应
+ session 对象：负责保存同一客户端一次会话过程中的一些信息
+ application 对象：表示整个应用的环境的信息
+ exception 对象：表示页面上发生的异常，可以通过它获得页面异常信息
+ page 对象：表示的是当前 JSP 页面本身，就像 Java 类定义中的 this 一样
+ pageContext 对象：表示的是此 JSP 的上下文
+ config 对象：表示此 JSP 的 ServletConfig
+
+ out 对象，对应的类型是    javax.servlet.jsp.JspWriter
+ out 对象的作用
+ 用来向客户端输出各种数据类型的内容
+ 对应用服务器上的输出缓冲区进行管理
+ out 对象一些常用的与管理缓冲区有关的函数： 
+ void close()：关闭输出流，从而可以强制终止当前页面的剩余部分向浏览器输出
+ void clearBuffer()：清除缓冲区里的数据，并且把数据写到客户端去
+ void clear()：清除缓冲区里的数据，但不把数据写到客户端去
+ int getRemaining()：获取缓冲区中没有被占用 的空间的大小
+ void flush()：输出缓冲区的数据。out.flush()函数也会清除缓冲区中的数据，但是此函数先将之前缓冲区的数据输出至客户端，然后再清除缓冲区的数据
+ int getBufferSize()：获得缓冲区的大小
+
+
+ request对应类型是 javax.servlet.http.HttpServletRequest
+ request包含的方法
+ String getMethod()：得到提交方式
+ String getRequestURI()：得到请求的 URL 地址
+ String getProtocol()：得到协议名称
+ String getServletPath()：获得客户端请求服务器文件的路径
+ String  getQueryString()：得到 URL 的查询部分，对 post 请求来说，该方法得不到任何信息
+ String getServerName()：得到服务器的名称
+ String getServerPort()：得到服务器口号
+ String getRemoteAddr()：得到客户端的 IP 地址
+
+ response 与 request 是一对相对应的内置对象
+ response 可以理解为服务器对客户端的响应，request可以理解为客户端发送给服务器的请求，二者所表示范围是相对应的2 个部分，具有很好的对称性。 
+ response  对应的类(接口)是：javax.servlet.http.HttpServletResponse。可以通过查找文档中javax.servlet.http.HttpServletResponse 
+   来了解response 的 API
+
+ 页面跳转的两种方法为：
+ 重定向：相当于客户端重新发送请求
+ response.sendRedirect(目标页面路径);
+ 转向：相当于在服务器端直接转向另一个页面：
+ <jsp:forward page=""></jsp:forward> 
+
+ forward 转发的页，以及转发到的目标页面能够共享 request 里面的数据
+ redirect 转发的页以及转发到的目标页面不能共享 request 里面的数据
+
+
+ Cookie 是一个小的文本数据，由服务器端生成，发送给客户端浏览器，客户端浏览器如果设置为启用  Cookie，则会将这个小文本数据保存到客户机某个目录下的文本文件内。
+ 下次登录同一网站，客户端浏览器则会自动将Cookie 读入之后，传给服务器端。
+ 一般情下，Cookie 中的值是以 key-value 的形式进行表达的
+
+ Cookie 操作主要用到以下几个方法：
+ response.addCookie(Cookie c)：通过该方法，将 Cookie 写入（发送给）客户端。
+ Cookie.setMaxAge(int second)：通过该方法，设置 Cookie 的存活时间。参数表示存活的秒数
+
+ 从客户端获取 Cookie 内容，主要通过以下方法：
+  Cookie[]  request.getCookies()：读取客户端传过来的 Cookie，以数组形式返回
+
+
+ Cookie 在 Web 编程中应用很广的原因：
+ Cookie  的值能够持久化，即使客户端机器关闭，下次打开还是可以得到里面的值
+ Cookie 可以帮助服务器端保存多个状态信息，但是不用服务器端专门分配存储资源
+ Cookie  可以持久保持一些和客户相关的信息
+
+
+8内置2
+
+ session，是JSP九大内置对象之一，它对应的类(接口)是：
+ javax.servlet.http.HttpSession。
+ 可以通过查找文档中javax.servlet.http.HttpSession来了解session的API。
+
+ 一些 session对象常用的方法
+ 将内容放入session对象中
+ void setAttribute(String name,Object obj)
+ 参数1：name是为放入session的对象(属性attribute，商品)起的名字 (标记)；
+ 参数2：obj，放入session中的对象（商品）本身
+
+ 读取session对象中的内容
+ Object getAttribute(String name)
+ 该方法表示根据name取出已经存进session的对象；
+ 返回值就是取出的对象。
+
+ 移除 session 中的内容的方法
+ void removeAttribute(String name)
+ 将属性名为name的内容从session中移除。
+ void session.invalidate()
+ 移除 session 中的全部内容
+
+
+ 
+ 对于每一个 session，服务器端都有一个sessionId 来标识它，可以通过以下方法获得：
+ String  session.getId()
+ 在客户第一次访问session时，服务器端就给session分配了一个sessionId，并且把这个sessionId传给客户端记录
+ 客户端访问下一个页面时，又将同一个sessionId传送给服务器端，服务器端根据这个sessionId来找到前一个页面用的同一个session对象
+
+ 对于一个 Web 容器而言，所有的用户都共同使用一个 application 对象
+ 服务器启动后，就会自动创建 application 对象，这个对象会一直保存，直到服务器关闭为止
+ 对应的类(接口)是：javax.servlet.ServletContext 
+
+ application 对象的 API 主要有以下几个：
+ 将内容放入 application 
+ void application.setAttribute(String name,Object obj); 
+ 读取 application 中的内容
+ Object application.getAttribute(String name);
+ 将内容从 application 中移除
+ void application.removeAttribute(String name);
+
+ 如果JSP页面在运行中发生异常，会把异常信息封装到exception对象中
+ 可以通过 exception 对象来获取一些异常信息。
+
+
+ exception，是 JSP 九大内置对象之一，它对应的类(接口)是：java.lang.Exception。
+
+
+
+
+
+
+
+
+9servlet
+ Servlet运行机制概述：
+ 1、Servlet被初次访问运行，服务器系统会实例化Servlet，即执行Servlet类的构造方法
+ 2、接着执行doGet方法
+ 3、接下来如果Servlet再次被访问，则不再创建对象，直接执行doGet方法
+ Servlet 采用的是多线程机制，每一次请求，系统就分配一个线程来运行 doGet 方法。
+
+ Servlet 声明周期的几个方法：
+  init()方法
+ 在实例化的过程中，HttpServlet 中的 init()方法被调用
+ doGet()/doPost()/service()方法 
+ doGet()在以 get 方式请求 Servlet 时运行。常见的 get 请求方式有：链接、get 方式表单提交、直接地址栏访问 Servlet
+ doPost()在以 post 方式请求 Servlet 时运行
+ service()方法将根据客户端的请求方式来决定调用对应的 doXXX()方法
+ destroy()方法
+ destroy()方法在 Servlet 实例消亡时自动调用
+ 当客户端向 Web 服务器提出第一次 Servlet 请求时，Web 服务器会实例化一个 Servlet，并且调用 init()方法；
+ 如果 Web 服务器中已经存在了一个 Servlet 实例(例如第2次请求时)，将直接使用此实例；
+ 然后调用  service()方法，service()方法将根据客户端的请求方式来决定调用对应的 doXXX()方法；
+ 当 Servlet 从 Web 服务器中消亡时，Web 服务器将会调用 Servlet的destroy()方法
+
+ Servlet的doGet或doPost方法中获得JSP内置对象的方法
+ 获得 out 对象
+ PrintWriter out=response.getWriter();
+ JSP 中的 out 对象，一般可以使用 doXXX 方法中的 response 参数获得
+
+ 获得 request 和 response 对象
+	public void doGet(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException { 
+	//将 request 参数当成 request 对象使用 
+	//将 response 参数当成 response 对象使用 
+	}  
+ 获得 session 对象
+	HttpSession session = request.getSession();
+           //将session当成session对象来使用
+ 
+ 获得 application 对象
+ 	ServletContext application = this.getServletContext(); 
+	//将 application 当成 application 对象来使用 
+
+
+	 重定向和服务器内转向的区别（请自行运行servlets.RofF验证）：
+ 1.地址栏的变化：
+ 重定向：地址栏变化。
+ 转向：地址栏不变。
+ 2.跳转后页面的request对象：
+ 重定向：在最终的Servlet中，request和中转的那个request不是同一个对象。
+  转向：在最终的Servlet中，request和中转的那个request是同一个对象。
+ 3.跳转到的资源：
+ 重定向：可以重定向到任何资源。包含站点外资源。
+  转向：只能转发给当前web应用的资源。
+ 4.绝对路径中“/”代表的含义：
+ 重定向：/代表的是当前web站点的根目录。
+ 转向：/代表的是当前web应用的根目录。
+
+
+ web.xml 文件有 2 种类型的参数设定：
+ 1、设置全局参数，该参数所有的 Servlet 都可以访问
+ 	<context-param> 
+	<param-name>参数名</param-name> 
+	<param-value>参数值</param-value> 
+	</context-param> 
+
+ 2、设置局部参数，该参数只有相应的 Servlet 才能访问
+ <servlet> 
+	<servlet-name>Servlet 名称</servlet-name> 
+	<servlet-class>Servlet 类路径</servlet-class> 
+	<init-param> 
+	<param-name>参数名</param-name> 
+	<param-value>参数值</param-value> 
+	</init-param> 
+ </servlet> 
+
+ 在Servlet的doGet或doPost方法中获取全局参数的方法是：
+    ServletContext application = this.getServletContext(); 
+	application.getInitParameter("参数名称");
+ 
+ 在Servlet的doGet或doPost方法中获取局部参数的方法是：
+   	this.getInitParameter("参数名称"); 
+ *此处的 this 是指 Servlet 本身 
+
+
+  需要过滤器的情况
+ 情况一：让所有的请求都经过过滤器，过滤器中处理中文乱码问题：
+ request.setCharacterEncoding(“gb2312”); response.setContentType(“text/html;charset=gb2312”); 
+ 情况二：让所有访问登录后页面的请求经过过滤器，过滤器检查是否登录，并可以判断用户权限。
+ HttpSession session=((HttpServletRequest)request).getSession();
+ //获取session对象，看里面有没有存储登录成功的用户信息
+
+ 1、定义过滤器类： 
+ 实现接口 javax.servlet.Filter;
+ 实现 3 个方法
+  初始化方法：表示的是过滤器初始化时的动作。 
+ public void init(FilterConfig config) ; 
+ 消亡方法：表示的是过滤器消亡时候的动作。 
+ public void destroy() ; 
+ 过滤函数：表示的是过滤器过滤时的动作。 
+ public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) ;
+
+ 2、在web.xml中配置哪些页面经过过滤器：
+ （1）先用用<filter>元素为类定义过滤器名字 
+	   <filter-name>元素用来设定过滤器的名字 
+     <filter- class >元素用来设定过滤器的类路径
+ （2）用<filter-mapping>配置过滤器过滤哪些文件
+ 过滤所有文件 
+	<filter-mapping> 
+	 <filter-name>FilterName</filter-name> 
+	 <url-pattern>/*</url-pattern> 
+  </filter-mapping> 
+ 2）用<filter-mapping>配置过滤器过滤哪些文件
+ 过滤一个或者多个文件目录
+	<filter-mapping> 
+	<filter-name>FilterName</filter-name> 
+	<url-pattern>/PATH1/* </url-pattern> 
+	</filter-mapping> 
+
+ 生命周期：
+ 1、构造方法和init方法：服务器启动时调用
+ 2、doFilter方法：每次访问需要过滤的页面时调用
+ 3、destroy方法：过滤器被销毁时调用，例如关闭服务器时
+
+
+ 异常处理步骤如下：
+ 2、在 web.xml 中注册该页面，如果定义异常类型为Exception，则可以处理所有类型的异常
+ <error-page> 
+	<exception-type>某种 Exception</exception-type> 
+	<location>/处理异常的页面</location> 
+ </error-page>
+
+
+10jsp和Javabeen
+  1、创建JavaBean对象（两种方式） 
+ （1）直接在 JSP 中实例化 JavaBean
+ <% Student student = new Student(); 
+	 //使用 student 
+ %> 
+ （2）使用<jsp:useBean>标签获取对象
+ <jsp:useBean id="idName" class="package.class" scope="page|session"> 
+ </jsp:useBean>
+
+ 2、设置 JavaBean 属性
+ （1）直接编写 Java 代码
+	<% 	student.setStuname("张华"); 	%> 
+ （2）使用<jsp:setProperty>标签
+ <jsp:setProperty property="属性名称" name="bean对象名" value="常量" />
+
+ 3、获取 JavaBean 属性
+ （2）使用 jsp:getProperty 动作
+ <jsp:getProperty property="属性名称" name="bean 对象名" /> 
+
+ JavaBean 的范围
+
+ page 
+ 表示 JavaBean 对象的作用范围只是在实例化其的页面上，只在当前页面可用，在别的页面中可用
+ request 
+ 表示 JavaBean 实例除了可以在当前页面上可用之外，还可以在通过 forward 方法跳转的目标页面中可用
+ session
+ 表示 JavaBean 对象可以存在 session 中，该对象可以在同一个用户同一次会话的所有页面可用
+ application
+ 表示 JavaBean 对象可以存在application中，在所有用户的所有页面可用
+ 具有application范围的JavaBean对象保存在服务器的内存空间中，所有页面可使用这同一个JavaBean对象，直到服务器关闭，才会被移除。
+
+
+ DAO（Data Access Object）类：
+ 封装了对数据库连接、增删改查等操作
+ VO（Value Object）类：
+ 封装了对象的属性的类，一般情况下和数据表对应，按狭义JavaBean的写法写。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
