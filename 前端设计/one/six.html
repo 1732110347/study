@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var t = 0;
+        function xixi() {
+            var time = new Date();
+            var h = "" + time.getHours();
+            var m = "" + time.getMinutes();
+            var s = "" + time.getSeconds();
+            if (h.length == 1) {
+                h = "0" + h;
+            }
+            if (m.length == 1) {
+                m = "0" + m;
+            }
+            if (s.length == 1) {
+                s = "0" + s;
+            }
+            var str = h + ":" + m + ":" + s;
+            document.forms.form1.haha.value = str;}
+            function hehe(){
+            clearlnterval(t);
+        }
+    </script>
+</head>
+
+<body onload="t=setInterval('xixi()',1000)">
+    <form name="form1">
+        <input name="haha">
+        <input type="button" value="停" onclick="hehe()">
+        <input type="button" value="继续" onclick="t=setinterval('xixi()',1000)">
+    </form>
+</body>
+
+</html>

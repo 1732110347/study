@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var start = document.querySelector(".start");
+            var end = document.querySelector(".end");
+
+            var calculation = document.querySelector(".calculation");
+            var clean = document.querySelector(".clean");
+            var str = end.value
+            var no = 0
+
+
+
+            calculation.onclick = function () {
+                no = 0
+                for (i=0;i<str.length;i++) {
+                    var asc = str.charCodeAt(i);
+                    if ((asc >= 65 && asc <= 90 || asc >= 97 && asc <= 122)) {
+                        no = 1;
+                    }
+                }
+                if (0==no ) {
+                    alert('mm')
+                }
+            }
+            clean.onclick = function () {
+
+                start.value = '';
+                end.value = '';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    用户名： <input type="text" name="start" id="" class="start">
+    密码： <input type="text" name="end" id="" class="end"><br>
+
+    <button class="calculation">验证</button>
+    <button class="clean">清空</button>
+</body>
+
+</html>

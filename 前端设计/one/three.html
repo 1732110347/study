@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <TITLE>New Document </TITLE>
+    <script>
+        function add() {
+            var td = document.getElementByld("mytab");
+            var br = document.createElement("br");
+            var file = document.createElement("input");
+            file.type = "file";
+            var del = document.createElement("input");
+            del.type = "button";
+            del.value = "删除";
+
+            del.onclick = function () {
+                td.removeChild(br);
+                td.removeChild(file);
+                td.removeChild(del);
+            }
+
+            td.appendChild(br);
+            td.appendChild(file);
+            td.appendChild(del);
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <table border="1">
+        <tr>
+            <td>文件上传
+            <td>
+            <td id="mytab">
+                <input type="file">
+                <input type="button" value="添加" onclick="add()">
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

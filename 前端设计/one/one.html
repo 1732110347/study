@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script language="javascript">
+        function add() {
+            var s1 = document.forms.haha.a1.value;
+            var s2 = document.forms.haha.a2.value;
+            if (s1.length < 6) {
+                alert("密码不能少于6位")
+            }
+            else {
+                if (s1 != s2) {
+                    alert("你两次输入的密码不一致！请重新输入")
+                    document.forms.haha.a1.focus();
+                }
+                else { alert("密码正确！请进！"); }
+
+            }
+        }
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+
+
+    <form name="haha">
+        <input type="text" name="a1" value="11">
+
+        <input type="text" name="a2"><br>
+
+        <input type="button" value="验证" onclick="add()">
+    </form>
+
+</body>
+
+</html>

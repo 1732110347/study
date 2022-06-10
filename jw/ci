@@ -219,7 +219,7 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)	thro
 	 //使用 student 
  %> 
  （2）使用<jsp:useBean>标签获取对象
- <jsp:useBean id="idName" class="package.class" scope="page|session"> 
+ <jsp:useBean id="idName实例化对象名" class="package.class" scope="page|session"> 
  </jsp:useBean>
 
  2、设置 JavaBean 属性
@@ -227,6 +227,9 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)	thro
 	<% 	student.setStuname("张华"); 	%> 
  （2）使用<jsp:setProperty>标签
  <jsp:setProperty property="属性名称" name="bean对象名" value="常量" />
+
+如果要使用request对象中的参数给JavaBean的属性设置值，则使用以下方法：
+<jsp:setProperty property="属性名称" name="bean 对象名"  param="参数名"/>
 
  3、获取 JavaBean 属性
  （2）使用 jsp:getProperty 动作

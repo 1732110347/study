@@ -4,20 +4,56 @@ SCHEMA数据库对象的集合，所谓的数据库对象也就是常说的表�
 
 REFERENCES 参照
 
+Exists 为非空集合
+
+DISTINCT消除重复
+Student 学生表
+ 学号 姓名 性别 年龄 所在系
+ Sno Sname Ssex Sage Sdept
+
+ Course 课程表
+ 课程号 课程名 先行课 学分
+ Cno Cname Cpno Ccredit
+
+ SC 学生选课表
+ 学号 课程号 成绩
+  Sno Cno Grade
+
+PRIMARY KEY主码
+UNIQUE取唯一值
+NOT NULL不能为空
+FOREIGN KEY(Sno)REFERENCES Stdent(Sno),
+
+1babab 6bacbc
+11bacda 16ddaac
+21abccb 26ccbaa
+31cbbcc 36cddca
+41bcdaa 46accaa
+51adaac 56cdcda
+61cbcac 66dbaaa
+71bdbad 76dabbb
+81cacda 86cdaac
+91cbadc 96cbada
+101acaad 106adaab
+111ccdadb
 
 
+2d 3c 4d 5a  18b 19d  21b 22a 25a
+26x 27d 28d 34x 44b 46c 48b 49x 51d 
+56a 57b 59c 60c 63a 64b 67c 68b 70c
+71a 72c 73d 76c 78c 82b 86x  88b 
+101d 104b 106d 107b 108b 
 
 
-
-
-
-
-
-
-
-
-
-
+1ddcbc 6dbaca
+11badcc 16abdcd
+21dccdb abacb
+查询和更新
+数据操作 数据控制
+外模式 内模式 模式名
+数据结构  数据操作  数据的完整性约束条件
+3 4 6
+3c  12a 26a 
 
 
 

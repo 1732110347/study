@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var box = document.querySelector(".box");
+            var top1 = document.querySelector(".top1");
+            var top2 = document.querySelector(".top2");
+            var top3 = document.querySelector(".top3");
+            top1.onclick = function () {
+                box.style.fontSize='15px'
+            }
+            top2.onclick = function () {
+                box.style.fontSize='35px'
+            }
+            top3.onclick = function () {
+                box.style.fontSize='45px'
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div>选择字号[
+        <a href="#" class="top1">小</a>
+        <a href="#" class="top2">中</a>
+        <a href="#" class="top3">大</a> ]
+    </div>
+    <div class="box" style="text-indent: 2rem;">
+        JavaScript是一种能让你的网页更加生动活泼的程式语言，也是目前网页中设计中最容易学又最方便的语言。你可以利用JavaScript轻易的做出亲切的欢迎讯息、漂亮的数字钟、有广告效果的跑马灯及简易的选举，还可以显示浏览器停留的时间。让这些特殊效果提高网页的可观性。
+    </div>
+</body>
+
+</html>

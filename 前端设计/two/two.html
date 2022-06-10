@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var start = document.querySelector(".start");
+            var end = document.querySelector(".end");
+            var addition = document.querySelector(".addition");
+            var calculation = document.querySelector(".calculation");
+            var clean = document.querySelector(".clean");
+            var se = end.value - start.value
+            var ca = 0
+            calculation.onclick = function () {
+
+                if (start.value == '' || end.value == '') {
+                    alert('请输入数据');
+                }
+                else if (se <= 0) {
+                    alert('起始数小于终止数');
+                }
+                else {
+                    ca = 0
+                    for (i = Number(start.value); i <= Number(end.value); i++) {
+                        ca = ca + i
+                    }
+                    addition.value = ca
+                }
+            }
+            clean.onclick = function () {
+
+                start.value = '';
+                end.value = '';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    起始数： <input type="text" name="start" id="" class="start">
+    终止数： <input type="text" name="end" id="" class="end"><br>
+    累加和： <input type="text" name="addition" id="" class="addition">
+    <button class="calculation">计算</button>
+    <button class="clean">清空</button>
+</body>
+
+</html>

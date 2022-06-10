@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          fieldset {
+            border: 20px outset blue;
+        
+    }
+    </style>
+    <script>
+        window.onload = function () {
+            var box = document.querySelector(".box");
+            var name = document.querySelector(".name");
+            var clean = document.querySelector(".clean");
+            var myname;
+            name.onclick = function () {
+                myname = prompt('请输入姓名');
+                box.value = myname
+                alert('你的姓名是' + box.value)
+            }
+            clean.onclick = function () {
+                box.value = '';
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <fieldset>
+        <legend>消息对话框综合应用</legend>
+        你的姓名：
+        <input type="text" class="box">
+        <button class="name">输入姓名</button>
+        <button class="clean">清空</button>
+    </fieldset>
+</body>
+
+</html>
